@@ -1,0 +1,19 @@
+main:
+  - name: Home
+    url: /
+    weight: 10
+  - name: Projects
+    url: projects/
+    weight: 20
+  - name: People
+    url: people/
+    weight: 30
+  - name: News
+    url: blog/
+    weight: 40
+  - name: Publications
+    url: publications/
+    weight: 50
+  - name: Contact
+    url: contact/
+    weight: 60

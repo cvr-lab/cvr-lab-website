@@ -1,0 +1,33 @@
+schema: hugoblox/author/v1
+slug: francisco-barranco
+is_owner: true
+name:
+  display: Francisco Barranco
+  given: Francisco
+  family: Barranco
+role: Associate Professor of Computer Engineering
+bio: Francisco Barranco is an Associate Professor of Computer Engineering at Universidad de Granada, Spain. He is one of the PI of the Computer Vision and Robotics Lab. His research interests include motion estimation, visual attention, segmentation from motion, stereo methods, and machine learning in applications such as ADAS, navigation, or Robotics. He is also focused on real-time solutions for estimation using massively parallel architectures (FPGAs, GPUs, SoMs...). He is also interested in neuromorphic engineering and in general, biologically-inspired strategies.
+affiliations:
+- name: Universidad de Granada
+  url: https://www.ugr.es/
+links:
+- icon: at-symbol
+  url: mailto:fbarranco@ugr.es
+- icon: academicons/google-scholar
+  url: https://scholar.google.com/citations?user=kvipcPUAAAAJ
+- icon: brands/github
+  url: https://github.com/fbarranco
+interests:
+- Computer Vision - Machine Learning
+- Robotics
+- Parallel processing/CPS/edge-cloud
+education:
+- degree: Marie Curie Fellow
+  institution: University of Maryland - College Park
+  end: '2015-12-31'
+- degree: PhD in Computer Engineering
+  institution: Universidad de Granada
+  end: '2012-12-31'
+user_groups:
+- Principal Investigators
+weight: 1

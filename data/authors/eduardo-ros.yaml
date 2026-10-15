@@ -1,0 +1,28 @@
+schema: hugoblox/author/v1
+slug: eduardo-ros
+is_owner: true
+name:
+  display: Eduardo Ros
+  given: Eduardo
+  family: Ros
+role: Full Professor of Computer Engineering
+bio: 'Dr. Eduardo Ros received the Ph.D. degree in 1997. He is currently Full Professor at the Department of Computer Architecture and Technology at the University of Granada. He received the Andalucia’s award for best young researchers in 2002. He has published more than 85 papers on international journals. He has three patents under exploitation. He is also co-founder and involved in Seven Solutions technology based enterprise. He is a very active researcher at an international level, he has participated as PI in 10 European Grants (of the 5th, 6th, 7th and H2020 EU frameworks and also MSCA actions). He leads an interdisciplinary lab whose main research interests include neurocomputational neuroscience, simulation of spiking neural networks, high performance and real time computer processing, etc. He has been supervisor of more than 18 PhD Thesis, some of these researchers are now in international and national universities such as Harvard U. (Boston), Denmark Technical U. (Copenhagen), Pierre&Marie Curie U. (Paris), U. Politécnica de Madrid and also international enterprises (mainly in UK, USA and Germany). Some recent awarded grants in which he participates as PI that can be highlighted are: CEREBROT - Adaptive Cerebellum for Sensori-motor Integration and its application to Robotics.(TIN2016-81041- R) (National grant); HBP - Human Brain Project. (SGA1) (H2020-RIA. 720270) (EU grant); REALNET - Realistic Real-time Networks: computation dynamics in the cerebellum. (FP7-270434)'
+affiliations:
+- name: Universidad de Granada
+  url: https://www.ugr.es/
+links:
+- icon: at-symbol
+  url: mailto:eros@ugr.es
+- icon: academicons/google-scholar
+  url: https://scholar.google.com/citations?user=lyL3mVoAAAAJ
+interests:
+- Cerebellum
+- Spiking-neural-networks
+- Neurorobotics
+education:
+- degree: PhD in Computer Science
+  institution: Universidad de Granada
+  end: '1997-12-31'
+user_groups:
+- Principal Investigators
+weight: 1

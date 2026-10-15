@@ -1,0 +1,30 @@
+schema: hugoblox/author/v1
+slug: juan-isern
+is_owner: true
+name:
+  display: Juan Isern
+  given: Juan
+  family: Isern
+role: PhD Student in Computer Engineering
+bio: Juan Isern is a PhD Student in Computer Engineering at the University of Granada.
+affiliations:
+- name: Universidad de Granada
+links:
+- icon: at-symbol
+  url: mailto:jisern@ugr.es
+- icon: brands/github
+  url: https://github.com/JuanIsernGhosn
+interests: []
+education:
+- degree: PhD in Artificial Intelligence
+  institution: Stanford University
+  end: '2012-12-31'
+- degree: MEng in Artificial Intelligence
+  institution: Massachusetts Institute of Technology
+  end: '2009-12-31'
+- degree: BSc in Artificial Intelligence
+  institution: Massachusetts Institute of Technology
+  end: '2008-12-31'
+user_groups:
+- Researchers
+weight: 2

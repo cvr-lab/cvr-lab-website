@@ -1,0 +1,38 @@
+schema: hugoblox/author/v1
+slug: daniel-deniz
+is_owner: true
+name:
+  display: Daniel Deniz
+  given: Daniel
+  family: Deniz
+role: PhD Student in Information and Communication Technologies
+bio: Daniel Deniz is a PhD Student in Information and Communication Technologies at the University of Granada. His research interests include computer vision, edge computing and activity recognition. He is currently working on the development of reconfigurable habit tracking systems for lifestyle monitoring using Artificial Intelligence.
+affiliations:
+- name: Universidad de Granada
+links:
+- icon: at-symbol
+  url: mailto:danideniz@ugr.es
+- icon: academicons/google-scholar
+  url: https://scholar.google.com/citations?user=vyzieNkAAAAJ
+- icon: brands/github
+  url: https://github.com/DaniDeniz
+interests:
+- Artificial Intelligence
+- Computer Vision
+- Activity Recognition
+education:
+- degree: PhD in Information and Communication Technologies
+  institution: Universidad de Granada
+  end: Currently-12-31
+- degree: M. Sc in Data Science
+  institution: Universidad de Granada
+  end: '2019-12-31'
+- degree: BSc in Computer Science
+  institution: Universidad de Las Palmas de Gran Canaria
+  end: '2018-12-31'
+- degree: BSc in Business Administration and Management
+  institution: Universidad de Las Palmas de Gran Canaria
+  end: '2018-12-31'
+user_groups:
+- Researchers
+weight: 2

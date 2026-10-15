@@ -1,0 +1,33 @@
+schema: hugoblox/author/v1
+slug: nicolas-cubero-torres
+is_owner: false
+name:
+  display: Nicolás Cubero Torres
+  given: Nicolás
+  family: Cubero Torres
+role: Alumni. MEng graduate in Data Science.
+bio: Nicolás Cubero is a former student of Data Science at the University of Granada. His research interests include Computing science, Artificial Intelligent, Computer Vision, Autonomous conversational systems and Quantum Computing too.
+affiliations:
+- name: Universidad de Granada
+links:
+- icon: at-symbol
+  url: mailto:cubetor97@gmail.com
+- icon: brands/github
+  url: https://github.com/Nico-Cubero
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/nicolás-cubero
+interests:
+- Artificial Intelligence
+- Computer Vision
+- Natural Language Processing
+- Quantum Computing
+education:
+- degree: MEng in Data Science
+  institution: University of Granada
+  end: '2019-12-31'
+- degree: BSc in Computer Engineering
+  institution: University of Córdoba
+  end: '2015-12-31'
+user_groups:
+- Alumni
+weight: 9
