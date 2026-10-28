@@ -75,6 +75,7 @@ __pycache__/
 *.pyc
 new-publications.bib
 publications-report.md
+report_fetch_publications.md
 
 # ============================================================================
 # VS Code configuration
