@@ -1,12 +1,17 @@
 ---
 title: Projects
+lead: Research projects of the lab, from neuromorphic vision and FPGA pipelines to drones and robot manipulation.
 date: 2026-10-15
 type: landing
+
+# Project pages have no reading-time estimate (it showed "0 min read").
+cascade:
+  reading_time: false
 
 sections:
   - block: portfolio
     content:
-      title: Projects
+      title: ''
       count: 100
       filters:
         folders:

@@ -18,10 +18,9 @@ image:
   focal_point: Smart
 ---
 
-# Object manipulation with the Baxter robot
 This website presents various demonstrations of pick and place tasks with the Baxter research robot. It contains object recognition and manipulation with different focus areas such as various shapes, sizes, and colours. It also includes trajectory and motion planning and the use of different grippers with the physical robot and in the simulation with gazebo, too. The demonstrations, based upon a project from Abhishek Patil from the Northwestern University. ([Project from Abhishek Patil](http://patilnabhi.github.io/baxter_two/)) 
 
-## Contents
+### Contents
 The packages include the following files:
    * **baxter_pnp.py**<br />
    It includes the commands for the pick and place task and subscribes to the topic "detected objects" which contains the coordinates of the objects. The MoveGroupCommander and the PlanningSceneInterface are used for the movements. 
@@ -32,7 +31,7 @@ The packages include the following files:
    * **Folder with models for simulation**<br />
    The projects for the simulation contain some models for the objects and the table which are from the Rethink Robotics example.
 
-# Prerequisites
+## Prerequisites
 
    ## Workstation Setup
 
@@ -107,7 +106,7 @@ At first the arguments in the demo_baxter.launch must be changed to true.
 Then can the grippers be changed in the files left_end_effector.urdf.xacro and right_end_effector.urdf.xacro.
 The possible settings for this files are explained at [this website](<https://groups.google.com/a/rethinkrobotics.com/forum/#!topic/brr-users/u7D_F2RP1Xo>).
 
-# Tasks Overview
+## Tasks Overview
 
 The tasks use two different path planning functions which have advantages and disadvantages. The movements with the common function are in the most cases faster and smoother but sometimes it computes very strength pathes. The cartesian path planning allways plans straight ways to the added waypoints. This can be very important for tasks, like the pick and place tasks with the basket, where the orientation should be the same. The disadvantages are that the function can't allways find a path to the goal and that it doesn't wait to continue with the code until it finished. (See Troubleshooting section) Moreover the tasks present various variations to solve a task with different performances.
 

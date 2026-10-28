@@ -18,17 +18,41 @@ sections:
         url: people/
     design:
       layout: split-left
+      size: compact
 
-  - block: markdown
+  - block: focus-areas
     id: about
     content:
       title: About the lab
       text: |-
-        Welcome to the Computer Vision and Robotics Lab, part of the [Department of Computer Engineering, Automation and Robotics](https://icar.ugr.es/) at the [University of Granada](https://www.ugr.es). The Computer Vision and Robotics Lab focuses on the research on active vision, autonomous navigation, neuromorphic vision, control, perception - action loops, collaboration and robotics. We are not interested on passive vision sensors but rather on sensors that can actively change their point of view or perspective, the way they perceive their environment by adaptation or select the most important information driven by the task assuming that allows for smart decision making. To enable active vision, our research is also focused on architectures that achieve real-time performance.
-
-        We have long expertise on low-level image processing: we have done optical flow algorithms (energy based, gradient based, block matching, etc.) and similar approaches for stereo models; we have also models for foreground/background subtraction (in surveillance applications) and local contrast descriptors (pixel wise orientation, energy, intrinsic dimensionality, etc.). We are also interested in multi-perspective vision, autonomous navigation, or structure from motion, specially any processing from motion that can be achieved in real-time. We have worked in different fields bus specially on ADAS (Advanced Driving Assistance Systems for cars), autonomous navigation with UAVs, video-surveillance applications, robotics.
+        We are part of the [Department of Computer Engineering, Automation and Robotics](https://icar.ugr.es/) at the [University of Granada](https://www.ugr.es). Our focus is active vision: sensors that change their point of view, adapt how they perceive their environment, and select the information the task needs, so that robots can make smart decisions in real time.
+      items:
+        - name: Active vision and robotics
+          description: Perception-action loops, attention, and collaboration for robots that look where the task requires.
+          icon: hero/eye
+          topics: [Perception-action, Attention, Manipulation]
+        - name: Neuromorphic vision
+          description: Event-based cameras for low-latency clustering, tracking, contour detection, and navigation.
+          icon: hero/bolt
+          topics: [Event cameras, Tracking, Segmentation]
+        - name: Real-time architectures
+          description: FPGA and edge pipelines that run dense vision at low power and full frame rate.
+          icon: hero/cpu-chip
+          topics: [FPGA, Edge computing, Embedded]
+        - name: Autonomous navigation
+          description: Egomotion, SLAM, and structure from motion for drones and mobile robots.
+          icon: hero/paper-airplane
+          topics: [UAVs, SLAM, Structure from motion]
+        - name: Motion and low-level vision
+          description: Optical flow, stereo, background subtraction, and local contrast descriptors.
+          icon: hero/arrows-right-left
+          topics: [Optical flow, Stereo, Descriptors]
+        - name: Applications
+          description: Advanced driver assistance (ADAS), video surveillance, and anomaly detection.
+          icon: hero/shield-check
+          topics: [ADAS, Surveillance, Anomaly detection]
     design:
-      columns: '1'
+      layout: cards
 
   - block: portfolio
     id: projects

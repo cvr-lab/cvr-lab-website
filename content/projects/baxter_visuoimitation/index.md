@@ -18,10 +18,9 @@ image:
   focal_point: Smart
 ---
 
-# Visuoimitation: Baxter imitates movements looking at an operator
  The objective of the system is to control a baxter robot using the kinect V2 and tis body structure extraction modules (body tracking) under the ROS (Robot Operating System) framework. Modules will be developed to make an interface between the robot and the Kinect body pose estimation so that the robot can imitate the movements of the operator in real time. The system is developed in Ubuntu through the use of libraries usch as libfreenect2, openNI-2, and NITE2 becasue the ROS framework is developed for Ubuntu. 
  
-# Installation
+## Installation
 The project has been tested with the 14.04 STL Ubuntu distribution. Also, for the current project ROS indigo was installed. In case you need to install this ROS version, you need first:
 
 Configure the source.list file
@@ -89,7 +88,7 @@ Run Baxter for the simulator
    
 
 
-# Workstation Setup
+## Workstation Setup
 The required steps to setup your workstation are described in the tutorial from rethink robotics®. This include the installation of Ubuntu, ROS, the Baxter SDK and the first connection to the robot. The direct connection from the Baxter to your workstation also requires a [network connection from the type Ethernet](http://sdk.rethinkrobotics.com/wiki/Workstation_Setup).
         
         Example: Network Connection->Add->Ethernet
@@ -98,7 +97,7 @@ The required steps to setup your workstation are described in the tutorial from 
         Address: 169.254.0.10, Netmask: 255.255.0.0, Gateway: 0.0.0.0
         
         
-# Gazebo (optional)
+## Gazebo (optional)
 
 Gazebo is a powerful simulation tool for robots. It allows to use already existing robots like the Baxter or to create own one. It is very useful for people who have not the possibility to work with a physical robot. [Check the Gazebo instructions](http://sdk.rethinkrobotics.com/wiki/Using_Gazebo_and_Baxter).
 
@@ -108,12 +107,12 @@ If MoveIt is already installed the packages must be copied from the workspace ro
 
         <arg name="world_name" value="$(find baxter_gazebo)/worlds/baxter.world"/>
 
-# Robot arm calibration
+## Robot arm calibration
 
 The calibration of the arms is recommended to get precisely results. There are two different calibration routines which are very well described on the website from rethink robotics. [Check the instructions from Rethink Robotics](http://sdk.rethinkrobotics.com/wiki/Arm_Calibration).
         
 
-# Examples and code
+## Examples and code
 
 The main objective of the project is described in the initial section of this page. The following videos show first and example of the setup with the code running, and the Baxter simulation in Gazebo imitating the movements of the operator. The next video shows a successful example of the robot imitating the operator movements. 
 
@@ -124,7 +123,7 @@ The main objective of the project is described in the initial section of this pa
  {{< youtube V6VbvJ-t0vg >}}
 
 
-# Contact
+## Contact
 
 Granada
 Cristina Garrido

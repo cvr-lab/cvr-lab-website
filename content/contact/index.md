@@ -1,12 +1,13 @@
 ---
 title: Contact
+lead: Visit us at CITIC, University of Granada, or get in touch by email.
 date: 2026-10-15
 type: landing
 
 sections:
   - block: contact-info
     content:
-      title: Contact
+      title: ''
       visit_title: Visit the lab
       connect_title: Connect with us
       address:

@@ -112,19 +112,26 @@ def legacy_links(d):
         url = d.get(field)
         if url and url != "#":
             out.append({"type": typ, "url": url})
+    # A "Website" that is just the code repository is dropped, and so is any repeated URL.
+    other_urls = {link["url"] for link in out if link["type"] != "site"}
+    out = [link for link in out if link["type"] != "site" or link["url"] not in other_urls]
     seen, uniq = set(), []
     for link in out:
-        key = (link["type"], link["url"])
-        if key not in seen:
-            seen.add(key)
+        if link["url"] not in seen:
+            seen.add(link["url"])
             uniq.append(link)
     # The portfolio card shows `label`/`icon` only, so give every link both.
+    labels = set()
     for link in uniq:
         label, icon = LINK_LABELS.get(link["type"], ("Link", "link"))
         if link["type"] == "code" and "github.com" in link["url"]:
             icon = "brands/github"
+        elif link["type"] == "code" and label in labels:
+            # A second, non-GitHub "Code" link is a download mirror.
+            label, icon = "Download", "arrow-down-tray"
         link.setdefault("label", label)
         link.setdefault("icon", icon)
+        labels.add(link["label"])
     return uniq
 
 
@@ -211,9 +218,30 @@ def migrate_publications():
                 shutil.copy(f, dst / f.name)
 
 
+def fix_headings(body):
+    """Drop a leading H1 that repeats the page title; demote the rest if H1s remain.
+
+    The page layout already prints the title as the page's H1.
+    """
+    lines, in_code, heads = body.split("\n"), False, []
+    for i, line in enumerate(lines):
+        if line.lstrip().startswith("```"):
+            in_code = not in_code
+        elif not in_code and re.match(r"#+ ", line):
+            heads.append(i)
+    if heads and lines[heads[0]].startswith("# "):
+        del lines[heads[0]]
+        heads = [i - 1 for i in heads[1:]]
+    if any(lines[i].startswith("# ") for i in heads):
+        for i in heads:
+            lines[i] = "#" + lines[i]
+    return "\n".join(lines)
+
+
 def migrate_projects():
     for idx in sorted((OLD / "content/project").glob("*/index.md")):
         d, body = read(idx)
+        body = fix_headings(body)
         out = {"title": d["title"], "summary": d.get("summary", ""), "date": d["date"]}
         if d.get("lastmod"):
             out["lastmod"] = d["lastmod"]

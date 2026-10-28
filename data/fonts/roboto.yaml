@@ -1,0 +1,36 @@
+# Roboto font pack (project-local). Loaded from Google Fonts by the kit.
+# Selected with hugoblox.typography.pack: "roboto" in config/_default/params.yaml.
+
+hugoblox:
+  meta:
+    format: "hugoblox-font@1"
+    name: "Roboto"
+    vendor: "cvr-lab"
+    version: "1.0.0"
+    license: "MIT"
+    style: "sans"
+    description: "Roboto for headings and body, Roboto Mono for code"
+
+  families:
+    heading: "Roboto"
+    body: "Roboto"
+    code: "Roboto Mono"
+
+  weights:
+    heading: [500, 700]
+    body: [400, 500, 700]
+    code: [400]
+
+  leading:
+    heading: 1.2
+    body: 1.6
+    code: 1.5
+
+  tracking:
+    heading: "-0.01em"
+    body: "0"
+
+  variable:
+    heading: true
+    body: true
+    code: false

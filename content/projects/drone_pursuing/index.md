@@ -9,18 +9,14 @@ tags:
 - Tracking
 authors: []
 links:
-- type: site
-  url: https://github.com/JJavier98/TFG-Bebop-YOLO
-  label: Website
-  icon: globe-alt
 - type: code
   url: https://github.com/JJavier98/TFG-Bebop-YOLO
   label: Code
   icon: brands/github
 - type: code
   url: https://drive.ugr.es/index.php/s/72yeiSMkw7YX7wn
-  label: Code
-  icon: code-bracket
+  label: Download
+  icon: arrow-down-tray
 image:
   caption: ''
   focal_point: Smart

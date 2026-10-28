@@ -1,5 +1,7 @@
 # Computer Vision and Robotics Lab — website
 
+> 🇪🇸 Guía de publicación en GitHub Pages y dominio propio: [README.es.md](README.es.md)
+
 Website of the Computer Vision and Robotics Lab (CVR Lab), University of Granada.
 Built with [Hugo](https://gohugo.io) and the [HugoBlox kit](https://github.com/HugoBlox/kit)
 (Tailwind CSS), published to GitHub Pages at <https://cvr-lab.github.io/>.
@@ -21,6 +23,12 @@ This is a prototype migrated from the Wowchemy 5 site currently served at
 | Site name, theme, header/footer | `config/_default/params.yaml` |
 | Menu | `config/_default/menus.yaml` |
 | Hugo version used by CI | `hugoblox.yaml` (`build.hugo_version`) |
+| Project card and research-area card designs (overrides of kit's `portfolio` and `focus-areas` blocks) | `layouts/_partials/hbx/blocks/<block>/block.html` |
+| Site font (Roboto, selected by `typography.pack` in `params.yaml`) | `data/fonts/roboto.yaml` |
+| Header: logo, wordmark, menu (override of kit's navbar) | `layouts/_partials/components/headers/navbar.html` |
+| Page title band on Projects, People, News, Publications, Contact (text from each page's `lead:` front matter) | `layouts/_partials/cvr/page_header.html`, used by `layouts/landing/*.html` and `layouts/list.html` |
+| Publications page (grouped by year, type filter) | `layouts/publications/list.html` |
+| Site CSS (header, publications, section spacing) | `assets/css/custom.css` |
 
 ### Adding a person
 

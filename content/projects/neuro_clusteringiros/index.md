@@ -27,7 +27,6 @@ image:
   focal_point: Smart
 ---
 
-# Real-time clustering and tracking for event-based sensors 
 
 This package implements a clustering and tracking using Kalman filters for DVS data (event based camera). 
 

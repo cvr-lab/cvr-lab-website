@@ -13,10 +13,6 @@ tags:
 authors:
 - Álvaro Ayuso
 links:
-- type: site
-  url: https://github.com/alvaroy96/Control_Gestual
-  label: Website
-  icon: globe-alt
 - type: code
   url: https://github.com/alvaroy96/Control_Gestual
   label: Code

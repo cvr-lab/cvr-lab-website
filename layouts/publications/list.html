@@ -1,0 +1,108 @@
+{{/*
+  CVR Lab publications page: all publications on one page, grouped by year (newest first),
+  with type filters. Lab members (authors with a profile in data/authors) are emphasised.
+  Replaces the kit's paginated citation list for this section only.
+*/}}
+{{ define "main" }}
+
+{{ $pubs := .Pages.ByDate.Reverse }}
+{{ $type_labels := dict
+  "article-journal" "Journal article"
+  "paper-conference" "Conference paper"
+  "chapter" "Book chapter"
+  "thesis" "Thesis"
+  "report" "Report"
+  "manuscript" "Preprint"
+}}
+{{ $type_plurals := dict
+  "article-journal" "Journal articles"
+  "paper-conference" "Conference papers"
+  "chapter" "Book chapters"
+  "thesis" "Theses"
+  "report" "Reports"
+  "manuscript" "Preprints"
+}}
+
+{{/* Count publications per type, in a fixed display order. */}}
+{{ $counts := dict }}
+{{ range $pubs }}
+  {{ $t := index (.Params.publication_types | default (slice "other")) 0 }}
+  {{ $counts = merge $counts (dict $t (add (index $counts $t | default 0) 1)) }}
+{{ end }}
+
+{{ partial "cvr/page_header.html" (dict "title" .Title "lead" .Params.lead) }}
+
+<div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-20" id="cvr-pubs">
+
+  {{/* Type filter */}}
+  <div class="flex flex-wrap justify-center gap-2 mb-10" role="group" aria-label="Filter by publication type">
+    <button type="button" class="cvr-chip is-active" data-filter="*" aria-pressed="true">
+      All <span class="cvr-chip-count">{{ len $pubs }}</span>
+    </button>
+    {{ range $t := slice "article-journal" "paper-conference" "chapter" "thesis" "report" "manuscript" }}
+      {{ with index $counts $t }}
+      <button type="button" class="cvr-chip" data-filter="{{ $t }}" aria-pressed="false">
+        {{ index $type_plurals $t }} <span class="cvr-chip-count">{{ . }}</span>
+      </button>
+      {{ end }}
+    {{ end }}
+  </div>
+
+  {{ range $pubs.GroupByDate "2006" }}
+  <section class="cvr-year grid gap-x-10 md:grid-cols-[7rem_1fr]">
+    <h2 class="cvr-year-label">{{ .Key }}</h2>
+    <ol class="cvr-pub-list">
+      {{ range .Pages }}
+        {{ $item := . }}
+        {{ $type := index (.Params.publication_types | default (slice "other")) 0 }}
+        {{ $pub := partial "functions/resolve_publication.html" . }}
+        <li class="cvr-pub" data-type="{{ $type }}">
+          <div class="cvr-pub-type">{{ index $type_labels $type | default "Publication" }}</div>
+          <h3 class="cvr-pub-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p class="cvr-pub-authors">
+            {{- range $i, $name := .Params.authors -}}
+              {{- if $i }}, {{ end -}}
+              {{- $profile := partial "functions/get_author_profile" (dict "slug" ($name | urlize) "title" $name) -}}
+              {{- if $profile.has_data -}}<span class="cvr-member">{{ $name }}</span>{{- else -}}{{ $name }}{{- end -}}
+            {{- end -}}
+          </p>
+          {{ with $pub.name | default $pub.short_name }}
+          <p class="cvr-pub-venue">{{ . | markdownify }}</p>
+          {{ end }}
+          {{ if partial "functions/has_attachments" $item }}
+          <div class="cvr-pub-links">
+            {{ partial "page_links" (dict "page" $item "is_list" 1) }}
+          </div>
+          {{ end }}
+        </li>
+      {{ end }}
+    </ol>
+  </section>
+  {{ end }}
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('cvr-pubs');
+    if (!root) return;
+    var chips = root.querySelectorAll('.cvr-chip');
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var f = chip.getAttribute('data-filter');
+        chips.forEach(function (c) {
+          var on = c === chip;
+          c.classList.toggle('is-active', on);
+          c.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        root.querySelectorAll('.cvr-pub').forEach(function (p) {
+          p.hidden = !(f === '*' || p.getAttribute('data-type') === f);
+        });
+        root.querySelectorAll('.cvr-year').forEach(function (y) {
+          y.hidden = !y.querySelector('.cvr-pub:not([hidden])');
+        });
+      });
+    });
+  })();
+</script>
+
+{{ end }}

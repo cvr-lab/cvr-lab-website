@@ -18,10 +18,9 @@ image:
   focal_point: Smart
 ---
 
-# Object classification tasks using the Baxter robot
 This project shows the development of various classification tasks in static and dynamic environments with the Baxter robot. This robot will separate two groups of objects with different colours, positions and sizes, using the Robot Operating System (ROS Kinetic) on Ubuntu 16.04 LTS, MoveIt! and the OpenCV library for the computer vision, based on the colour filter made by [Maik Heufekes](https://github.com/cvr-lab/baxter_pick_and_place). Check the [Youtube videos](https://www.youtube.com/channel/UC9pq0ErS5dWzlCzpUrRdZlg/videos?view_as=subscriber).
  
-# Prerequisites
+## Prerequisites
 
    ## Workstation Setup
 
@@ -53,12 +52,12 @@ To set the workstation, the tutorial from [Rethink Robotics has been consulted](
 
     $ python hsvThresholder.py frame0000.jpg
 
-# Tasks Overview
+## Tasks Overview
 
 There are two main classification tasks using a paddle and a wedge as tools, the first one is used in static classification and the other one in dynamic. Both of them are made out of cardboard and it is common that sometimes the objects weight more than the tools, resulting on difficulties at the time of classifying. The clustering algorithm used is K-means with k = 2, it separates the objects by colour and position. This algorithm gives us the centroids of both groups so that we can get the middle point.
 
 
-## Static environment classification
+### Static environment classification
 
 Baxter classifies objects on the top of a table, setting them aside.
 
@@ -75,7 +74,7 @@ Open a new terminal:
     $ catkin_make
     $ roslaunch classif classification.launch
 
-## Dynamic environment classification using a wedge
+### Dynamic environment classification using a wedge
 
 For making this classification, the speed of the objects on the conveyor belt has to be calculated. Then, the Baxter robot will predict where the objects are to separate them.
 
@@ -91,7 +90,7 @@ Open a new terminal:
     $ catkin_make
     $ roslaunch dyn_wedge dyn_wedge.launch
 
-## Dynamic environment classification using a paddle
+### Dynamic environment classification using a paddle
 
 For making this classification, the speed of the objects on the conveyor belt has to be calculated. Then, the Baxter robot will predict where the objects are to separate them. In this case, the tool used is a paddle, so it will be necessary to predict the position twice, as it can be seen in the video.
 
@@ -108,7 +107,7 @@ Open a new terminal:
     $ catkin_make
     $ roslaunch dyn_classif dyn_classif.launch
 
-# Packages
+## Packages
 
 * **classif**. It includes the classification in a static environment.
 * **dyn_classif**. Classification in a dynamic environment using a paddle.

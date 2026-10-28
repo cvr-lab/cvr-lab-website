@@ -1,12 +1,13 @@
 ---
 title: People
+lead: Principal investigators, researchers and alumni of the lab.
 date: 2026-10-15
 type: landing
 
 sections:
   - block: team-showcase
     content:
-      title: Meet the Team
+      title: ''
       user_groups:
         - Principal Investigators
         - Researchers

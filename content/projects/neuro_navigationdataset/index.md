@@ -21,7 +21,6 @@ image:
   focal_point: Smart
 ---
 
-# Dataset for Visual Navigation with Neuromorphic Methods
 This directory contains Matlab (R) implementations of methods to generate and handle DVS data for building a dataset
 
 Standardized benchmarks for Computer Vision provide a very powerful tool for the development of new improved techniques in the field. Frame-free event-driven vision still lacks of datasets to assess the accuracy of their methods. Furthermore, the visibility of Event-driven Vision will be enhanced thanks to the comparison to frame-based conventional Computer Vision to make researchers in the field understand the potential of this novel technology.

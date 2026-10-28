@@ -1,0 +1,5 @@
+{{/* CVR Lab override: landing pages with a `lead` param get the shared page title band. */}}
+{{- define "main" -}}
+  {{ with .Params.lead }}{{ partial "cvr/page_header.html" (dict "title" $.Title "lead" .) }}{{ end }}
+  {{ partial "landing_page.html" . }}
+{{- end -}}

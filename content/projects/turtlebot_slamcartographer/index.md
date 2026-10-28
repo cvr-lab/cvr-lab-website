@@ -8,10 +8,6 @@ tags:
 - SLAM
 authors: []
 links:
-- type: site
-  url: https://github.com/Jotaripe/CVSlam
-  label: Website
-  icon: globe-alt
 - type: code
   url: https://github.com/Jotaripe/CVSlam
   label: Code

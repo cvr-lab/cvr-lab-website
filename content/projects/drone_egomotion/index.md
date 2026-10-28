@@ -8,10 +8,6 @@ tags:
 - Bebop
 authors: []
 links:
-- type: site
-  url: https://github.com/cvr-lab/Indoor_Dron_Experiments_ROS
-  label: Website
-  icon: globe-alt
 - type: code
   url: https://github.com/cvr-lab/Indoor_Dron_Experiments_ROS
   label: Code

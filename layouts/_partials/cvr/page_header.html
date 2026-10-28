@@ -1,0 +1,11 @@
+{{/*
+  Page title band shared by the section pages (Projects, People, News, Publications, Contact),
+  so every top-level page has the same title size and spacing below the navbar.
+  Input: dict "title" (string), "lead" (optional markdown string).
+*/}}
+<div class="cvr-page-header mx-auto max-w-3xl px-4 sm:px-6 pt-10 pb-6 sm:pt-14 sm:pb-8 text-center">
+  <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">{{ .title }}</h1>
+  {{ with .lead }}
+  <p class="mt-4 text-lg leading-relaxed text-gray-600 dark:text-gray-300">{{ . | markdownify }}</p>
+  {{ end }}
+</div>
