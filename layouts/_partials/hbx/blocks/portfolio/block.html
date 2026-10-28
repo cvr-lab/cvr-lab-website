@@ -358,9 +358,10 @@
           {{ if gt (len $tech_stack) 0 }}
           <div class="flex flex-wrap gap-1.5 mb-4">
             {{ range first 4 $tech_stack }}
-            <span class="px-2 py-0.5 text-xs font-medium rounded-md bg-primary-100 dark:bg-primary-500/10 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-500/20 h-fit">
+            <a href="{{ printf "tags/%s/" (urlize .) | relLangURL }}"
+              class="cvr-tag relative z-10 px-2 py-0.5 text-xs font-medium rounded-md bg-primary-100 dark:bg-primary-500/10 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-500/20 h-fit">
               {{ . }}
-            </span>
+            </a>
             {{ end }}
             {{ if gt (len $tech_stack) 4 }}
             <span class="px-2 py-0.5 text-xs font-medium rounded-md bg-gray-100 dark:bg-gray-500/10 text-gray-600 dark:text-gray-400 h-fit">

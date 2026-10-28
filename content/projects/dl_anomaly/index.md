@@ -8,14 +8,14 @@ tags:
 - Crowds
 authors: []
 links:
-- type: site
-  url: https://nico-cubero.github.io/Surveillance-AnomDetection-FedLearning/
-  label: Website
-  icon: globe-alt
 - type: code
   url: https://github.com/Nico-Cubero/Surveillance-AnomDetection-FedLearning
   label: Code
   icon: brands/github
+- type: site
+  url: https://nico-cubero.github.io/Surveillance-AnomDetection-FedLearning/
+  label: Website
+  icon: globe-alt
 image:
   caption: ''
   focal_point: Smart

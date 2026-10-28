@@ -38,18 +38,12 @@ project's `authors:` list and it links to the profile automatically. Put
 the person in one of the groups listed in `content/people/index.md` via `user_groups`,
 and use `weight` to order people inside a group.
 
-### Adding a publication
-
-Copy an existing folder in `content/publications/`, or add the BibTeX entry to a
-`publications.bib` file at the repo root: the *Import Publications From Bibtex*
-workflow converts it and opens a pull request.
-
 ## Local development
 
-Requirements: Hugo **extended 0.161.1** (see the note below), Go, and Node.js 22 with pnpm or npm.
+Requirements: Hugo **extended 0.161.1** (see the note below), Go, and Node.js 22 with npm.
 
 ```sh
-pnpm install          # or: npm install
+npm install          
 hugo server           # http://localhost:1313/
 ```
 

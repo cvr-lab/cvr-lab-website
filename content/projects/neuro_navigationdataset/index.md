@@ -8,14 +8,14 @@ tags:
 - Dataset
 authors: []
 links:
-- type: site
-  url: http://atcproyectos.ugr.es/realtimeasoc/protected/evbench.html
-  label: Website
-  icon: globe-alt
 - type: code
   url: https://github.com/cvr-lab/eventVision-evbench
   label: Code
   icon: brands/github
+- type: site
+  url: http://atcproyectos.ugr.es/realtimeasoc/protected/evbench.html
+  label: Website
+  icon: globe-alt
 image:
   caption: ''
   focal_point: Smart

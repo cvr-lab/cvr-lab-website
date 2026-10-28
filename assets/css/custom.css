@@ -24,7 +24,7 @@
 }
 
 .cvr-brand-seal {
-  height: 40px;
+  height: 46px;
   width: auto;
   flex: none;
 }
@@ -44,16 +44,18 @@
 
 .cvr-brand-name {
   font-family: var(--hb-font-heading, inherit);
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--hb-color-header-fg);
 }
 
 .cvr-brand-org {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 400;
   color: color-mix(in srgb, var(--hb-color-header-fg) 60%, transparent);
+  /* display:none; */
+  margin-left: 3px
 }
 
 .cvr-nav .nav-link {
@@ -138,6 +140,15 @@
 .cvr-brand:focus-visible {
   outline: 2px solid var(--color-primary-500);
   outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .cvr-brand-name {
+    font-size: 1.05rem;
+  }
+  .cvr-brand-seal {
+    height: 36px;
+  }
 }
 
 /* ── Publications page (layouts/publications/list.html) ─────────────────── */
@@ -328,4 +339,423 @@
 /* Contact page: the info cards block ends with py-20; pull the map up. */
 #section-contact-info > div:not(.home-section-bg) {
   padding-bottom: 1rem;
+}
+
+/* Hero buttons: larger */
+#section-hero a[href$="projects/"],
+#section-hero a[href$="people/"] {
+  padding: 0.9rem 2rem !important;
+  font-size: 1.125rem !important;
+  line-height: 1.25 !important;
+}
+
+
+
+
+/* ── Portada: Projects ─────────────────────────────────────────── */
+#projects .text-center.mb-12 {
+  margin-bottom: 1.25rem !important;
+}
+#projects .text-center.mb-12 h2 {
+  margin-bottom: 0 !important;
+}
+#projects .flex.flex-wrap.justify-center.mb-10 {
+  margin-bottom: 1.5rem !important;
+}
+#projects .text-center.mt-12 {
+  margin-top: 1.5rem !important;
+}
+
+/* ── Portada: Latest News (3 columnas, más compacto) ───────────── */
+#news .mt-16.w-fit {
+  margin-top: 0.5rem !important;
+  width: 100%;
+  max-width: var(--cvr-grid-max);
+}
+#news .space-y-16 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: none;
+  width: 100%;
+}
+
+#news article {
+  display: flex !important;
+  flex-direction: column;
+  position: relative;
+  padding: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--hb-color-foreground) 12%, transparent);
+  border-radius: 0.75rem;
+}
+#news article h2 > div {
+  display: none; /* halo de hover pensado para la lista estrecha */
+}
+#news article h2 a > span:first-child {
+  inset: 0 !important;
+  border-radius: 0.75rem;
+}
+
+/* ── Rejillas de la portada: mismo ancho y misma separación ───── */
+:root {
+  --cvr-grid-gap: 1.25rem;  /* separación entre cuadros: cámbiala aquí */
+  --cvr-grid-max: 76rem;    /* ancho máximo de las tres rejillas */
+}
+
+#about .grid,
+#projects .grid,
+#news .space-y-16 {
+  width: 100%;
+  max-width: var(--cvr-grid-max);
+  margin-inline: auto;
+  gap: var(--cvr-grid-gap);
+}
+
+/* News: mismos márgenes laterales que las otras dos secciones */
+#news .flex.flex-col.items-center.px-6:not(.max-w-prose) {
+  padding-inline: 1rem;
+}
+@media (min-width: 640px) {
+  #news .flex.flex-col.items-center.px-6:not(.max-w-prose) {
+    padding-inline: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  #news .flex.flex-col.items-center.px-6:not(.max-w-prose) {
+    padding-inline: 2rem;
+  }
+}
+
+/* News: mismas columnas que las otras dos (1 / 2 / 3) */
+#news .space-y-16 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  #news .space-y-16 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  #news .space-y-16 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* News: tarjetas de tamaño fijo, texto recortado con puntos suspensivos */
+#news .space-y-16 {
+  grid-auto-rows: 1fr;          /* todas las filas con la misma altura */
+}
+#news article {
+  min-width: 0;
+  height: 100%;
+  overflow-wrap: anywhere;      /* parte palabras larguísimas */
+}
+#news article > div:first-child {
+  flex: 1;                      /* el contenido ocupa toda la tarjeta */
+  width: 100%;
+  min-width: 0;
+}
+#news article h2 a {
+  display: block;
+}
+#news article h2 a > span.relative {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;        /* título: máximo 2 líneas */
+  overflow: hidden;
+}
+#news article [aria-hidden="true"] {
+  margin-top: auto;             /* "Read more" siempre abajo */
+}
+
+
+
+/* Clickable  tags in What we research */
+a.cvr-topic {
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+a.cvr-topic:hover {
+  background: color-mix(in srgb, var(--color-primary-600) 14%, transparent);
+  color: var(--color-primary-700);
+}
+.dark a.cvr-topic:hover {
+  color: var(--color-primary-300);
+}
+
+/* Clickable tags in Projects landing page */
+a.cvr-tag {
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+a.cvr-tag:hover {
+  background-color: var(--color-primary-200);
+  border-color: var(--color-primary-400);
+}
+.dark a.cvr-tag:hover {
+  background-color: color-mix(in srgb, var(--color-primary-500) 25%, transparent);
+}
+
+/* Projects and publications: author description max 3 lines.
+   The job always complete. */
+
+:is(.cvr-project, .cvr-publication) .place-self-center > div.text-sm.text-neutral-700:not(.font-bold) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+:is(.cvr-project, .cvr-publication) .place-self-center > div.text-sm.text-neutral-700:not(.font-bold) p {
+  margin: 0;
+}
+
+/* Button publications */
+/* Enlaces de la cabecera (PDF, Code, Cite...) en proyectos y publicaciones.
+   El primer enlace es el principal; Cite siempre es secundario. */
+.cvr-page-links > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* Padding y font size para cambiar el tamaño + cambio del icono más abajo */
+.cvr-page-links .hb-attachment-link.hb-attachment-link-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--hb-color-foreground) 22%, transparent);
+  background: transparent;
+  color: var(--hb-color-foreground);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.cvr-page-links .hb-attachment-link.hb-attachment-link-large:hover {
+  border-color: var(--color-primary-500);
+  color: var(--color-primary-700);
+  background: color-mix(in srgb, var(--color-primary-600) 8%, transparent);
+}
+.dark .cvr-page-links .hb-attachment-link.hb-attachment-link-large:hover {
+  color: var(--color-primary-300);
+}
+
+/* Icono más grande (el !important vence al style="height: 1em" del HTML) */
+.cvr-page-links .hb-attachment-link svg {
+  height: 1.35rem !important;
+  width: 1.35rem;
+}
+
+/* Botón principal (relleno), según el tipo de enlace declarado:
+   - proyectos: type: code
+   - publicaciones: type: pdf; si no hay PDF, el primer enlace que no sea Cite */
+:is(
+  .cvr-project .cvr-page-links [data-link-type="code"],
+  .cvr-publication .cvr-page-links [data-link-type="pdf"],
+  .cvr-publication .cvr-page-links:not(:has([data-link-type="pdf"])) .hb-attachment-link:first-child:not(.js-cite-clipboard)
+) {
+  background: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+  color: #fff;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--color-primary-600) 30%, transparent);
+}
+:is(
+  .cvr-project .cvr-page-links [data-link-type="code"],
+  .cvr-publication .cvr-page-links [data-link-type="pdf"],
+  .cvr-publication .cvr-page-links:not(:has([data-link-type="pdf"])) .hb-attachment-link:first-child:not(.js-cite-clipboard)
+):hover {
+  background: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+  color: #fff;
+}
+
+
+/* Página de investigador: botones de contacto (el correo es el principal) */
+.cvr-contact > div {
+  gap: 0.625rem;
+}
+.cvr-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--hb-color-foreground) 22%, transparent);
+  color: var(--hb-color-foreground);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+.cvr-contact a:hover {
+  scale: none !important;      /* anula el zoom del tema al pasar el ratón */
+  transform: none !important;
+  border-color: var(--color-primary-500);
+  color: var(--color-primary-700);
+  background: color-mix(in srgb, var(--color-primary-600) 8%, transparent);
+}
+.dark .cvr-contact a:hover {
+  color: var(--color-primary-300);
+}
+.cvr-contact a svg {
+  height: 1.35rem !important;  /* vence al style="height: 1em" del HTML */
+  width: 1.35rem;
+}
+
+/* Principal: el correo */
+.cvr-contact a[href^="mailto:"] {
+  background: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+  color: #fff;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--color-primary-600) 30%, transparent);
+}
+.cvr-contact a[href^="mailto:"]:hover {
+  background: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+  color: #fff;
+}
+
+/* Texto de cada botón, según el dominio del enlace */
+.cvr-contact a[href^="mailto:"]::after            { content: "Email"; }
+.cvr-contact a[href*="scholar.google"]::after     { content: "Google Scholar"; }
+.cvr-contact a[href*="github.com"]::after         { content: "GitHub"; }
+.cvr-contact a[href*="linkedin.com"]::after       { content: "LinkedIn"; }
+.cvr-contact a[href*="orcid.org"]::after          { content: "ORCID"; }
+.cvr-contact a[href*="researchgate.net"]::after   { content: "ResearchGate"; }
+
+
+
+
+/* ── People: tarjetas del mismo tamaño ───────────────────────────── */
+
+/* Todas las filas de la rejilla con la misma altura */
+.grid:has(> .group > .overflow-hidden > a.aspect-square) {
+  grid-auto-rows: 1fr;
+}
+
+/* La tarjeta ocupa todo el alto de su celda */
+.grid:has(> .group > .overflow-hidden > a.aspect-square) > .group {
+  display: flex;
+}
+.grid:has(> .group > .overflow-hidden > a.aspect-square) > .group > .overflow-hidden {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* El bloque de texto se estira y las redes quedan siempre abajo */
+.grid:has(> .group > .overflow-hidden > a.aspect-square) .p-6 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nombre: máximo 2 líneas, reserva una */
+.grid:has(> .group > .overflow-hidden > a.aspect-square) .p-6 > h3 {
+  min-height: 1.75rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/* Cargo: reserva 2 líneas, máximo 2 */
+.grid:has(> .group > .overflow-hidden > a.aspect-square) .p-6 > div > p.font-medium {
+  min-height: 3rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/* Universidad: una sola línea */
+.grid:has(> .group > .overflow-hidden > a.aspect-square) .p-6 > div > p.text-sm {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Descripción: reserva 2 líneas (el recorte a 2 ya lo hace el tema) */
+.grid:has(> .group > .overflow-hidden > a.aspect-square) .p-6 > p.line-clamp-2 {
+  min-height: 2.5rem;
+}
+
+/* Redes y enlaces: abajo del todo; si hay muchos, saltan de línea */
+.grid:has(> .group > .overflow-hidden > a.aspect-square) .p-6 > div.flex {
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.grid:has(> .group > .overflow-hidden > a.aspect-square) a.aspect-square img {
+  object-fit: cover;
+  object-position: center top;
+}
+
+
+/* ── Lista de publicaciones: enlaces como botones pequeños ───────── */
+.cvr-pub-links,
+.cvr-pub-links > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cvr-pub-links .hb-attachment-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--hb-color-foreground) 22%, transparent);
+  background: transparent;
+  color: var(--hb-color-foreground);
+  font-size: 0.775rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+.cvr-pub-links .hb-attachment-link:hover {
+  border-color: var(--color-primary-500);
+  color: var(--color-primary-700);
+  background: color-mix(in srgb, var(--color-primary-600) 8%, transparent);
+}
+.dark .cvr-pub-links .hb-attachment-link:hover {
+  color: var(--color-primary-300);
+}
+.cvr-pub-links .hb-attachment-link svg {
+  height: 1.1rem !important;   /* vence al style="height: 1em" del HTML */
+  width: 1.1rem;
+}
+
+/* Principal (azul relleno): el PDF; si no hay PDF, el primer enlace que no sea Cite */
+:is(
+  .cvr-pub-links [data-link-type="pdf"],
+  .cvr-pub-links:not(:has([data-link-type="pdf"])) .hb-attachment-link:first-child:not(.js-cite-clipboard)
+) {
+  background: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+  color: #fff;
+}
+:is(
+  .cvr-pub-links [data-link-type="pdf"],
+  .cvr-pub-links:not(:has([data-link-type="pdf"])) .hb-attachment-link:first-child:not(.js-cite-clipboard)
+):hover {
+  background: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+  color: #fff;
 }

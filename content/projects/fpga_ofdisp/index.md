@@ -7,14 +7,14 @@ tags:
 - High performance
 authors: []
 links:
-- type: site
-  url: https://ohwr.org/project/img-proc-core-lib/wikis/home
-  label: Website
-  icon: globe-alt
 - type: code
   url: https://ohwr.org/project/img-proc-core-lib/tree/master
   label: Code
   icon: code-bracket
+- type: site
+  url: https://ohwr.org/project/img-proc-core-lib/wikis/home
+  label: Website
+  icon: globe-alt
 image:
   caption: ''
   focal_point: Smart

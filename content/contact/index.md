@@ -25,17 +25,26 @@ sections:
           url: https://github.com/cvr-lab
         - icon: brands/youtube
           url: https://www.youtube.com/channel/UCk7tb7X-07H43RrItDFdohQ/videos
-      map_url: https://www.openstreetmap.org/?mlat=37.197749&mlon=-3.624017#map=17/37.197749/-3.624017
+      map_url: https://www.google.com/maps/dir/?api=1&destination=37.19792193730784,-3.6240023846538847
       show_form: false
 
   - block: map
     content:
       title: Find us
+      subtitle: Computer Vision and Robotics Lab, Universidad de Granada
       location:
-        lat: 37.197749265181855
-        lng: -3.624017091580353
-        address: CITIC - UGR, Calle Periodista Rafael Gómez Montero 2, 18014 Granada, Spain
+        address: |
+          Calle Periodista Rafael Gómez Montero, 2, Chana, 18014 Granada
+          Granada, Spain
+        lat: 37.19792193730784 
+        lng: -3.6240023846538847
       zoom: 16
+      cta:
+        directions:
+          text: Get directions
+          url: https://www.google.com/maps/dir/?api=1&destination=37.19792193730784,-3.6240023846538847
     design:
-      layout: map-only
+      layout: side-by-side
+      height: md
+      style: light
 ---

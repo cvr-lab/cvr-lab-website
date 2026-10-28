@@ -1,0 +1,73 @@
+# Cada lunes busca publicaciones nuevas de los investigadores en OpenAlex,
+# filtra las del laboratorio, genera sus páginas en content/publications/
+# y abre UNA pull request para revisarlas. No necesita import-publications.yml.
+name: Weekly publications from OpenAlex
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # lunes, 06:00 UTC
+  workflow_dispatch:       # botón "Run workflow" en la pestaña Actions
+    inputs:
+      dry_run:
+        description: 'Solo simular: muestra el informe sin crear la PR'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: weekly-publications
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: pip install pyyaml "academic>=0.10.0"
+
+      - name: Fetch and filter publications
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+        run: |
+          python scripts/publications/fetch_publications.py \
+            --report "$RUNNER_TEMP/report.md" \
+            --new-bib "$RUNNER_TEMP/new-publications.bib" \
+            ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Generate the publication pages
+        run: |
+          if [ -f "$RUNNER_TEMP/new-publications.bib" ]; then
+            academic import "$RUNNER_TEMP/new-publications.bib" content/publications/ --compact --verbose
+          else
+            echo "No new publications this week."
+          fi
+
+      - name: Show report in the job summary
+        run: cat "$RUNNER_TEMP/report.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Create Pull Request
+        if: ${{ !inputs.dry_run }}
+        uses: peter-evans/create-pull-request@v8
+        with:
+          add-paths: |
+            content/publications
+            scripts/publications/seen.json
+          commit-message: 'feat(publications): new publications from OpenAlex'
+          title: 'Publicaciones nuevas (OpenAlex)'
+          body-path: ${{ runner.temp }}/report.md
+          base: main
+          branch: weekly-publications
+          labels: automated-pr, publications
+          delete-branch: true

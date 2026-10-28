@@ -8,14 +8,14 @@ tags:
 - Machine Learning
 authors: []
 links:
-- type: site
-  url: http://www.umiacs.umd.edu/research/POETICON/DVSContours/index.html
-  label: Website
-  icon: globe-alt
 - type: code
   url: https://github.com/cvr-lab/dvs_bownership
   label: Code
   icon: brands/github
+- type: site
+  url: http://www.umiacs.umd.edu/research/POETICON/DVSContours/index.html
+  label: Website
+  icon: globe-alt
 - type: pdf
   url: http://www.umiacs.umd.edu/research/POETICON/DVSContours/resources/docs/1197.pdf
   label: PDF

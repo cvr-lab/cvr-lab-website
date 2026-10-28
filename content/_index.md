@@ -7,7 +7,7 @@ sections:
   - block: hero
     content:
       title: Computer Vision and Robotics Lab
-      text: The Computer Vision and Robotics Lab is a research group for active vision, real-time processing, neuromorphic engineering, and robotics.
+      text: The Computer Vision and Robotics Laboratory is a research group at the University of Granada dedicated to active vision, real-time processing, neuromorphic engineering, and robotics.
       media:
         src: hero.jpg
       primary_action:
@@ -23,34 +23,34 @@ sections:
   - block: focus-areas
     id: about
     content:
-      title: About the lab
+      title: What we research
       text: |-
         We are part of the [Department of Computer Engineering, Automation and Robotics](https://icar.ugr.es/) at the [University of Granada](https://www.ugr.es). Our focus is active vision: sensors that change their point of view, adapt how they perceive their environment, and select the information the task needs, so that robots can make smart decisions in real time.
       items:
         - name: Active vision and robotics
           description: Perception-action loops, attention, and collaboration for robots that look where the task requires.
           icon: hero/eye
-          topics: [Perception-action, Attention, Manipulation]
+          topics: [Attention, Manipulation, Robotics]
         - name: Neuromorphic vision
           description: Event-based cameras for low-latency clustering, tracking, contour detection, and navigation.
           icon: hero/bolt
-          topics: [Event cameras, Tracking, Segmentation]
+          topics: [Neuromorphic, Contours, Dataset]
         - name: Real-time architectures
           description: FPGA and edge pipelines that run dense vision at low power and full frame rate.
-          icon: hero/cpu-chip
-          topics: [FPGA, Edge computing, Embedded]
+          icon: hero/clock
+          topics: [FPGA, Real-time systems, High performance]
         - name: Autonomous navigation
           description: Egomotion, SLAM, and structure from motion for drones and mobile robots.
           icon: hero/paper-airplane
-          topics: [UAVs, SLAM, Structure from motion]
+          topics: [Drones, SLAM, Navigation]
         - name: Motion and low-level vision
           description: Optical flow, stereo, background subtraction, and local contrast descriptors.
-          icon: hero/arrows-right-left
-          topics: [Optical flow, Stereo, Descriptors]
+          icon: hero/cpu-chip
+          topics: [Egomotion, Contours, High performance]
         - name: Applications
           description: Advanced driver assistance (ADAS), video surveillance, and anomaly detection.
           icon: hero/shield-check
-          topics: [ADAS, Surveillance, Anomaly detection]
+          topics: 	[Anomaly, Crowds, Deep Learning]
     design:
       layout: cards
 
@@ -87,7 +87,7 @@ sections:
     id: news
     content:
       title: Latest News
-      count: 5
+      count: 3
       filters:
         folders:
           - blog

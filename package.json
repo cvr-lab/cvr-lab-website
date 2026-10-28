@@ -2,11 +2,10 @@
   "name": "cvr-lab-website",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@10.14.0",
   "description": "Computer Vision and Robotics Lab website (Hugo Blox, Tailwind CSS v4)",
   "scripts": {
     "dev": "hugo server --disableFastRender",
-    "build": "hugo --minify && pnpm run pagefind",
+    "build": "hugo --minify && npm run pagefind",
     "pagefind": "pagefind --site public"
   },
   "dependencies": {

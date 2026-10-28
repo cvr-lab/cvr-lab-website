@@ -44,10 +44,6 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
 
-    - name: Setup pnpm
-      if: hashFiles('package.json') != ''
-      uses: pnpm/action-setup@v6
-
     - name: Get Hugo Version
       id: hugo-version
       run: |
@@ -82,7 +78,7 @@ jobs:
         # Install Tailwind CLI if package.json exists
         if [ -f "package.json" ]; then
           echo "Installing Tailwind dependencies..."
-          pnpm install --no-frozen-lockfile || npm install
+          npm install
         fi
 
     - name: Verify Tailwind CSS dependency
@@ -90,7 +86,7 @@ jobs:
       run: |
         if ! node -e "require.resolve('@tailwindcss/cli/package.json')" 2>/dev/null; then
           echo "::error title=Missing dependency '@tailwindcss/cli'::Hugo >= 0.161.0 requires the npm @tailwindcss/cli package. Add it to package.json:"
-          echo "::error::  pnpm add @tailwindcss/cli tailwindcss"
+          echo "::error::  npm install @tailwindcss/cli tailwindcss"
           echo "::error::See https://github.com/HugoBlox/kit for upgrade instructions."
           exit 1
         fi
@@ -108,8 +104,7 @@ jobs:
           /tmp/hugo_cache_runner/
           node_modules/
           modules/*/node_modules/
-        key: ${{ runner.os }}-hugo-deps-${{ hashFiles('**/go.mod', '**/package-lock.json',
-          '**/pnpm-lock.yaml') }}
+        key: ${{ runner.os }}-hugo-deps-${{ hashFiles('**/go.mod', '**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-hugo-deps-
 
@@ -138,7 +133,7 @@ jobs:
       run: |
         # Check if site uses Pagefind search
         if [ -f "package.json" ] && grep -q "pagefind" package.json; then
-          pnpm run pagefind || npx pagefind --site "public"
+          npm run pagefind || npx pagefind --site "public"
         fi
 
     - name: Upload artifact

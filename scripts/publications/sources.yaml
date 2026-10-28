@@ -1,0 +1,131 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Fuentes y filtro para la importación semanal de publicaciones (OpenAlex)
+#
+# Este es el ÚNICO archivo que hay que tocar para:
+#   - añadir o quitar investigadores
+#   - afinar qué trabajos se consideran "del laboratorio"
+# La clave de la API NO va aquí: se guarda como secreto OPENALEX_API_KEY.
+# ─────────────────────────────────────────────────────────────────────────────
+
+people:
+  # name:     igual que el campo `title:` de data/authors/<slug>.yaml
+  #           (así las publicaciones enlazan con su ficha)
+  # orcid:    el ORCID del investigador (0000-0000-0000-0000). Es lo más fiable.
+  # openalex: alternativa si no tiene ORCID (identificador tipo A5023888391)
+  # since:    año desde el que se importan sus trabajos (p. ej. año de entrada al lab)
+  # bib_name: opcional, "Apellidos, Nombre" si el nombre tiene apellido compuesto
+  # aliases:  opcional, otras formas de escribir su nombre en los artículos
+  - name: "Francisco Barranco"
+    orcid: "0000-0002-3721-0170"
+    openalex: ""
+    since: 2012
+    # bib_name: "Barranco, Francisco"
+    # aliases: ["F. Barranco"]
+
+  - name: "Daniel Deniz"
+    orcid: ""
+    openalex: ""
+    since: 2018
+
+  - name: "Juan Isern"
+    orcid: ""
+    openalex: ""
+    since: 2018
+
+  - name: "Alvaro Novo"
+    orcid: ""
+    openalex: ""
+    since: 2018
+
+  - name: "Ricardo Shepstone Aramburu"
+    orcid: ""
+    openalex: ""
+    since: 2018
+  
+  - name: ""
+    orcid: ""
+    openalex: ""
+    since: 2010
+
+  - name: ""
+    orcid: ""
+    openalex: ""
+    since: 2020
+
+  # Copia este bloque para añadir a alguien más:
+  # - name: "Nombre Apellido"
+  #   orcid: "0000-0000-0000-0000"
+  #   since: 2022
+
+
+
+settings:
+  # Un trabajo se propone si su puntuación llega a este umbral.
+  # Bájalo para ser más generoso (entran más dudosos), súbelo para ser más estricto.
+  threshold: 3
+
+  title_weight: 3          # puntos por cada palabra clave que aparece en el título
+  abstract_weight: 1       # puntos por cada palabra clave distinta en el resumen
+  abstract_cap: 3          # máximo de puntos que puede dar el resumen
+  topic_weight: 2          # puntos si un tema asignado por OpenAlex coincide con `topics`
+  lab_coauthors_bonus: 3   # puntos extra si firman el trabajo 2 o más miembros del lab
+
+  # Institución obligatoria: solo se proponen trabajos en los que la persona del
+  # laboratorio figure con esta afiliación (identificador ROR de la institución).
+  # Universidad de Granada = https://ror.org/04njjy449.  Déjalo vacío ("") para no exigirla.
+  # Ojo: si OpenAlex no tiene bien registrada la afiliación de un trabajo, se descartará;
+  # esos casos se ven en el informe y se rescatan con include_dois.
+  institution_ror: "https://ror.org/04njjy449"
+
+  # Tipos de documento de OpenAlex que se ignoran
+  exclude_types: [paratext, peer-review, erratum, retraction, editorial, letter, dataset, other]
+
+
+# Palabras clave del laboratorio (sin distinguir mayúsculas; admiten plural simple).
+keywords:
+  - event camera
+  - event-based
+  - neuromorphic
+  - dynamic vision sensor
+  - optical flow
+  - stereo
+  - disparity
+  - fpga
+  - active vision
+  - visual attention
+  - saliency
+  - egomotion
+  - visual odometry
+  - slam
+  - structure from motion
+  - uav
+  - drone
+  - quadrotor
+  - anomaly detection
+  - video surveillance
+  - adas
+  - driver assistance
+  - activity recognition
+  - habit
+  - federated learning
+  - gesture recognition
+  - object tracking
+  - baxter
+  - robot
+  - ros
+  - edge computing
+
+# Fragmentos de los temas que OpenAlex asigna a cada trabajo (segunda opinión).
+topics:
+  - computer vision
+  - robotics
+  - neuromorphic
+  - optical flow
+  - unmanned aerial
+  - visual odometry
+  - object tracking
+  - fpga
+
+# Correcciones manuales por DOI (en minúsculas, sin https://doi.org/)
+include_dois: []   # se proponen siempre, aunque no superen el umbral
+exclude_dois: []   # no se proponen nunca

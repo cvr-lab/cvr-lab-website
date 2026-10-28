@@ -1,6 +1,6 @@
 ---
 title: People
-lead: Principal investigators, researchers and alumni of the lab.
+lead: Principal investigators, researchers and students associated with the lab.
 date: 2026-10-15
 type: landing
 
