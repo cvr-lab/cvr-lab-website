@@ -34,5 +34,5 @@ education:
   institution: Universidad de Las Palmas de Gran Canaria
   end: '2018-12-31'
 user_groups:
-- Researchers
+- Hidden
 weight: 2

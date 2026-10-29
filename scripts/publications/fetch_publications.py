@@ -329,41 +329,79 @@ def term_regex(term: str) -> re.Pattern:
     return re.compile(r"\b" + re.escape(term.lower()) + r"(s|es)?\b")
 
 
-def score_work(w: dict, title: str, n_lab: int, cfg: dict, kw_res, topics) -> tuple[int, list[str]]:
+def score_work(w: dict, title: str, n_lab: int, cfg: dict, thr: int,
+               kw_res, topics, weak_res=(), excl_res=()) -> tuple[int, list[str]]:
     """Calcula los puntos de un trabajo y explica de dónde salen.
-
-    Reglas (los valores se cambian en sources.yaml, sección `settings`):
-      - cada palabra clave distinta en el TÍTULO     -> title_weight  (3)
-      - cada palabra clave distinta en el RESUMEN    -> abstract_weight (1),
-        con un máximo total de abstract_cap (3)
-      - un tema de OpenAlex que coincida con `topics` -> topic_weight (2), una vez
-      - 2 o más miembros del laboratorio como autores -> lab_coauthors_bonus (3)
-
-    Una palabra clave cuenta como mucho una vez: si ya está en el título, no
-    suma también por el resumen. Devuelve (puntos, lista de motivos)."""
+ 
+    Tres tipos de palabras (todas en sources.yaml):
+      keywords          PRINCIPALES: lo que define al laboratorio.
+                        título -> title_weight (3), resumen -> abstract_weight (1,
+                        con tope abstract_cap)
+      weak_keywords     GENÉRICAS (robot, ros...): suman poco, como mucho weak_cap
+                        puntos en total, así que nunca bastan por sí solas.
+      exclude_keywords  de OTRAS áreas (cerebelo...): restan exclude_penalty puntos
+                        cada una. Se buscan en título, resumen y temas de OpenAlex.
+ 
+    Además:
+      - un tema de OpenAlex que coincida con `topics`        -> topic_weight (2)
+      - 2 o más miembros del laboratorio como autores        -> lab_coauthors_bonus (3)
+      - require_strong_keyword: si está activo y el trabajo no contiene NINGUNA
+        palabra principal (y no lo firman 2+ miembros), la puntuación se limita
+        para que no llegue al umbral.
+ 
+    Devuelve (puntos, lista de motivos)."""
     st = cfg.get("settings", {})
     t = title.lower()
     ab = abstract_text(w.get("abstract_inverted_index")).lower()
-    score, reasons, ab_pts = 0, [], 0
-    for term, rx in kw_res:
-        if rx.search(t):
-            score += st.get("title_weight", 3)
-            reasons.append(f"título: {term}")
-        elif ab and rx.search(ab) and ab_pts < st.get("abstract_cap", 3):
-            ab_pts += st.get("abstract_weight", 1)
-            score += st.get("abstract_weight", 1)
-            reasons.append(f"resumen: {term}")
-    # Segunda opinión: los temas y palabras clave que OpenAlex asigna al trabajo.
     topic_names = " ".join((x.get("display_name") or "") for x in (w.get("topics") or [])).lower()
     topic_names += " " + " ".join((x.get("display_name") or "") for x in (w.get("keywords") or [])).lower()
+    score, reasons, ab_pts, strong_hit = 0, [], 0, False
+ 
+    # Palabras principales (cada una cuenta como mucho una vez).
+    for term, rx in kw_res:
+        if rx.search(t):
+            strong_hit = True
+            score += st.get("title_weight", 3)
+            reasons.append(f"título: {term}")
+        elif ab and rx.search(ab):
+            strong_hit = True
+            if ab_pts < st.get("abstract_cap", 3):
+                ab_pts += st.get("abstract_weight", 1)
+                score += st.get("abstract_weight", 1)
+                reasons.append(f"resumen: {term}")
+ 
+    # Palabras genéricas: aportan poco y tienen un tope.
+    weak_pts = 0
+    for term, rx in weak_res:
+        if weak_pts >= st.get("weak_cap", 1):
+            break
+        if rx.search(t) or (ab and rx.search(ab)):
+            weak_pts += st.get("weak_weight", 1)
+            score += st.get("weak_weight", 1)
+            reasons.append(f"genérica: {term}")
+ 
+    # Segunda opinión: los temas y palabras clave que OpenAlex asigna al trabajo.
     for tp in topics:
         if tp in topic_names:
             score += st.get("topic_weight", 2)
             reasons.append(f"tema: {tp}")
             break                        # un solo acierto de tema basta
+ 
     if n_lab >= 2:
         score += st.get("lab_coauthors_bonus", 3)
         reasons.append(f"{n_lab} miembros del lab")
+ 
+    # Palabras de otras áreas: restan puntos.
+    everything = f"{t} {ab} {topic_names}"
+    for term, rx in excl_res:
+        if rx.search(everything):
+            score -= st.get("exclude_penalty", 4)
+            reasons.append(f"excluida: {term}")
+ 
+    # Exigir al menos una palabra principal (los coautorados por 2+ miembros se libran).
+    if st.get("require_strong_keyword") and not strong_hit and n_lab < 2:
+        score = min(score, thr - 1)
+        reasons.append("sin palabra clave principal")
     return score, reasons
 
 
@@ -559,6 +597,8 @@ def run(cfg: dict, works: dict, existing: Existing, new_bib: Path,
     excl = {norm_doi(d) for d in cfg.get("exclude_dois") or []}
     forced = {norm_doi(d) for d in cfg.get("include_dois") or []}
     inst_ror = st.get("institution_ror") or ""   # vacío = no se exige ninguna institución
+    weak_res = [(k, term_regex(k)) for k in cfg.get("weak_keywords") or []]
+    excl_res = [(k, term_regex(k)) for k in cfg.get("exclude_keywords") or []]
 
     # ── PASO 4: descartar lo que no toca ──────────────────────────────────────
     # by_title guarda un solo trabajo por título normalizado. Si hay un preprint
@@ -579,6 +619,7 @@ def run(cfg: dict, works: dict, existing: Existing, new_bib: Path,
         # los que ningún miembro del laboratorio figura con esa afiliación.
         if inst_ror and not lab_affiliated(w, members, inst_ror):
             no_institution += 1
+            print("Descartado: " + title)
             continue
         prev = by_title.get(nt)
         if prev is None or (prev[0].get("type") == "preprint" and w.get("type") != "preprint"):
@@ -588,7 +629,13 @@ def run(cfg: dict, works: dict, existing: Existing, new_bib: Path,
     accepted, near, discard = [], [], []          # near = cerca del umbral (1 o 2 puntos)
     for w, title, doi in by_title.values():
         authors, lab = author_list(w, members)
-        score, reasons = score_work(w, title, len(set(lab)), cfg, kw_res, topics)
+        # Miembros del laboratorio que firman este trabajo (para ajustes por persona):
+        # umbral propio (`threshold`) y palabras excluidas propias (`exclude_keywords`).
+        here = [m for au in w.get("authorships") or [] if (m := members.match(au))]
+        thr = min([m.get("threshold", threshold) for m in here] or [threshold])
+        own_excl = [(k, term_regex(k)) for m in here for k in (m.get("exclude_keywords") or [])]
+
+        score, reasons = score_work(w, title, len(set(lab)), cfg, thr, kw_res, topics, weak_res, excl_res + own_excl)
         if doi in forced:            # include_dois: se propone aunque no llegue
             score, reasons = max(score, threshold), reasons + ["incluida a mano"]
         rec = {"w": w, "title": title, "doi": doi, "authors": authors,

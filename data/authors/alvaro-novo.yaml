@@ -1,0 +1,36 @@
+schema: hugoblox/author/v1
+slug: alvaro-novo
+is_owner: true
+name: 
+  display: Álvaro Novo
+  given: Álvaro
+  family: Martínez Novo
+role: PhD Neuromorphic Robotics
+bio: Álvaro Novo was born in Granada, Spain, in 1997. He obtained his B.Sc. degree in Industrial Electronics Engineering from the University of Granada (UGR), Granada, Spain, in 2019. In 2020, he received his M.Sc. degree in Automation and Robotics from the Polytechnic University of Madrid (UPM), Madrid, Spain. He received his Ph.D. in autonomous robotics in 2026 from the UGR. During the Ph.D. studies, he was a Visiting Researcher with the University of Maryland (UMD), College Park, MD, USA. He is currently a Postdoctoral Researcher with the Department of Computer Engineering, Automation and Robotics (ICAR), UGR. His main research interests include guidance-navigation-control policies, computer vision, and bio-inspired solutions applied to Unmanned Aerial Vehicles (UAVs) using different technologies, including neuromorphic sensors.
+affiliations:
+- name: Universidad de Granada
+  url: https://www.ugr.es/
+links:
+- icon: at-symbol
+  url: mailto:martineznovo@ugr.es
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/alvaro-martinez-novo/
+interests:
+- Computer Vision
+- Robotics
+- Neuromorphic
+- Drones
+- Autonomous Navigation
+education:
+- degree: PhD in Autonomous Robotics
+  institution: Universidad de Granada
+  end: '2026-12-31'
+- degree: MSc in Automation and Robotics
+  institution: Universidad Politécnica de Madrid
+  end: '2020-12-31'
+- degree: BSc in Industrial Electronics Engineering
+  institution: Universidad de Granada
+  end: '2019-12-31'
+user_groups:
+- Researchers
+weight: 1

@@ -15,12 +15,43 @@ people:
   # since:    año desde el que se importan sus trabajos (p. ej. año de entrada al lab)
   # bib_name: opcional, "Apellidos, Nombre" si el nombre tiene apellido compuesto
   # aliases:  opcional, otras formas de escribir su nombre en los artículos
+
+  # Si no tienen orcid, ni openalex, no se buscarán sus trabajos pero contará como parte del laboratorio,
+  # es decir, cuenta para miembros pero no se buscan sus trabajos especificos. Hacemos la trampa con Eduardo Ros
+  # para evitar incluir muchos artículos que no están relacionados con el laboratorio, aunque también se puede
+  # hacer a través de las exclude_words, pero así da mejor resultados.
+
   - name: "Francisco Barranco"
     orcid: "0000-0002-3721-0170"
-    openalex: ""
+    openalex: "A5001763650"
     since: 2012
     # bib_name: "Barranco, Francisco"
     # aliases: ["F. Barranco"]
+
+  - name: "Eduardo Ros"
+    orcid: ""
+    openalex: ""
+    since: 2014
+
+  - name: "Samuel Romero"
+    orcid: "0000-0002-6207-0624"
+    openalex: "A5010355046"
+    since: 2014
+
+  - name: "Alvaro Novo"
+    orcid: "0009-0006-1705-316X"
+    openalex: "A5103065013"
+    since: 2020
+
+  - name: "Ricardo Shepstone"
+    orcid: ""
+    openalex: ""
+    since: 2018
+
+  - name: "Gabriel Jimenez-Perera"
+    orcid: "0009-0000-8834-5668"
+    openalex: ""
+    since: 2020
 
   - name: "Daniel Deniz"
     orcid: ""
@@ -32,56 +63,50 @@ people:
     openalex: ""
     since: 2018
 
-  - name: "Alvaro Novo"
+  - name: "Jorge Sanchez"
     orcid: ""
     openalex: ""
-    since: 2018
-
-  - name: "Ricardo Shepstone Aramburu"
-    orcid: ""
-    openalex: ""
-    since: 2018
-  
-  - name: ""
-    orcid: ""
-    openalex: ""
-    since: 2010
-
-  - name: ""
-    orcid: ""
-    openalex: ""
-    since: 2020
+    since: 2026
 
   # Copia este bloque para añadir a alguien más:
   # - name: "Nombre Apellido"
   #   orcid: "0000-0000-0000-0000"
   #   since: 2022
 
-
-
 settings:
   # Un trabajo se propone si su puntuación llega a este umbral.
   # Bájalo para ser más generoso (entran más dudosos), súbelo para ser más estricto.
   threshold: 3
-
+ 
   title_weight: 3          # puntos por cada palabra clave que aparece en el título
   abstract_weight: 1       # puntos por cada palabra clave distinta en el resumen
   abstract_cap: 3          # máximo de puntos que puede dar el resumen
   topic_weight: 2          # puntos si un tema asignado por OpenAlex coincide con `topics`
   lab_coauthors_bonus: 3   # puntos extra si firman el trabajo 2 o más miembros del lab
-
+ 
+  weak_weight: 1           # puntos de cada palabra de `weak_keywords`
+  weak_cap: 1              # máximo de puntos que pueden dar TODAS las genéricas juntas
+  exclude_penalty: 4       # puntos que RESTA cada palabra de `exclude_keywords`
+ 
+  # Si es true, un trabajo debe contener al menos una palabra de `keywords`
+  # (las principales) para poder proponerse, aunque sume puntos por otras vías.
+  # Los firmados por 2 o más miembros del laboratorio se libran de esta regla.
+  require_strong_keyword: true
+ 
   # Institución obligatoria: solo se proponen trabajos en los que la persona del
   # laboratorio figure con esta afiliación (identificador ROR de la institución).
   # Universidad de Granada = https://ror.org/04njjy449.  Déjalo vacío ("") para no exigirla.
   # Ojo: si OpenAlex no tiene bien registrada la afiliación de un trabajo, se descartará;
   # esos casos se ven en el informe y se rescatan con include_dois.
   institution_ror: "https://ror.org/04njjy449"
-
+ 
   # Tipos de documento de OpenAlex que se ignoran
   exclude_types: [paratext, peer-review, erratum, retraction, editorial, letter, dataset, other]
 
 
-# Palabras clave del laboratorio (sin distinguir mayúsculas; admiten plural simple).
+# PALABRAS PRINCIPALES: lo que de verdad define al laboratorio.
+# Sin distinguir mayúsculas; admiten plural. Un '*' final busca por prefijo
+# ('cerebell*' encuentra cerebellum, cerebellar...).
 keywords:
   - event camera
   - event-based
@@ -90,7 +115,6 @@ keywords:
   - optical flow
   - stereo
   - disparity
-  - fpga
   - active vision
   - visual attention
   - saliency
@@ -106,25 +130,38 @@ keywords:
   - adas
   - driver assistance
   - activity recognition
-  - habit
   - federated learning
   - gesture recognition
   - object tracking
   - baxter
+  - IFMIF-DONES
+
+# PALABRAS GENÉRICAS: aparecen en muchos campos ajenos (un robot controlado por un
+# modelo del cerebelo también dice "robot"). Suman como mucho `weak_cap` puntos en
+# total, así que nunca bastan para proponer un trabajo por sí solas.
+weakkeywords:
   - robot
   - ros
   - edge computing
+  - fpga
+
+# PALABRAS DE OTRAS ÁREAS: restan `exclude_penalty` puntos cada una. Se buscan en
+# el título, el resumen y los temas que OpenAlex asigna. Ve añadiendo aquí lo que
+# veas colarse en el informe. Cuidado con ser demasiado agresivo: lo que se frena
+# por esta vía aparece en el informe, en "Frenadas por palabras excluidas".
+exclude_keywords:
+  - cerebell*
 
 # Fragmentos de los temas que OpenAlex asigna a cada trabajo (segunda opinión).
 topics:
   - computer vision
-  - robotics
   - neuromorphic
   - optical flow
   - unmanned aerial
   - visual odometry
   - object tracking
   - fpga
+  - Advanced Vision and Imaging
 
 # Correcciones manuales por DOI (en minúsculas, sin https://doi.org/)
 include_dois: []   # se proponen siempre, aunque no superen el umbral

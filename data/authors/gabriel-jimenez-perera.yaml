@@ -5,8 +5,8 @@ name:
   display: Gabriel Jimenez-Perera
   given: Gabriel
   family: Jimenez-Perera
-role: PhD Student in Information and Communication Technologies
-bio: Gabriel Jimenez is a researcher in the fields of Computer Vision and Federated Learning.
+role: Substitute Assistant Professor
+bio: Gabriel Jimenez-Perera is a pre-doctoral researcher in the fields of computer vision, cyber-physical systems, and federated learning in distributed systems.
 affiliations:
 - name: Universidad de Granada
 links:
@@ -19,6 +19,9 @@ links:
 interests:
 - Computer Vision
 - Federated Learning
+- Robotics
+- Machine Learning
+- Deep Learning
 education:
 - degree: PhD in Information and Communication Technologies
   institution: Universidad de Granada

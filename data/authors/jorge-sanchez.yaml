@@ -1,0 +1,35 @@
+schema: hugoblox/author/v1
+slug: jorge-sanchez
+is_owner: false
+name:
+  display: Jorge Sanchez
+  given: Jorge
+  family: Sánchez López-Tello
+role: Researcher
+bio: Researcher at the University of Granada. He holds a degree in Computer Engineering and specializes in the field of robotics, specifically in computer vision and navigation.
+affiliations:
+- name: Universidad de Granada
+links:
+- icon: at-symbol
+  url: mailto:jorgeslt@ugr.es
+- icon: brands/github
+  url: https://github.com/JorgeSLT
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/jorge-sanchez-lopez-tello/
+interests:
+- Computer Vision
+- Robotics
+- Machine Learning
+- Deep Learning
+- Drones
+- SLAM
+- Autonomous Navigation
+- 3D Vision and Reconstruction
+- Object detection and Tracking
+education:
+- degree: BSc in Computer Engineering, University of Granada
+  institution: Universidad de Granada
+  end: 2024-12-31
+user_groups:
+- Researchers
+weight: 2

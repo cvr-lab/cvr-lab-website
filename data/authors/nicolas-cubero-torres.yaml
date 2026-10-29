@@ -29,5 +29,5 @@ education:
   institution: University of Córdoba
   end: '2015-12-31'
 user_groups:
-- Alumni
+- Hidden
 weight: 9
