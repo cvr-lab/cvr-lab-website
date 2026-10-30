@@ -1,0 +1,67 @@
+{
+ "https://openalex.org/W4225985385": {
+  "added": "2026-10-30",
+  "doi": "10.1007/978-3-031-04881-4_32",
+  "title": "Visual Event-Based Egocentric Human Action Recognition"
+ },
+ "https://openalex.org/W4321490903": {
+  "added": "2026-10-30",
+  "doi": "10.1007/s11265-023-01842-2",
+  "title": "A Cyber-Physical System for Integrated Remote Control and Protection of Smart grid Critical Infrastructures"
+ },
+ "https://openalex.org/W4321617500": {
+  "added": "2026-10-30",
+  "doi": "10.1007/s11265-023-01840-4",
+  "title": "Deep Multimodal Habit Tracking System: A User-adaptive Approach for Low-power Embedded Systems"
+ },
+ "https://openalex.org/W4363647250": {
+  "added": "2026-10-30",
+  "doi": "10.1109/ciss56502.2023.10089678",
+  "title": "When Do Neuromorphic Sensors Outperform cameras? Learning from Dynamic Features"
+ },
+ "https://openalex.org/W4376136446": {
+  "added": "2026-10-30",
+  "doi": "10.3389/fnins.2023.1160034",
+  "title": "Optical flow estimation from event-based cameras and spiking neural networks"
+ },
+ "https://openalex.org/W4385328207": {
+  "added": "2026-10-30",
+  "doi": "10.48550/arxiv.2307.14332",
+  "title": "Event-based Vision for Early Prediction of Manipulation Actions"
+ },
+ "https://openalex.org/W4394606507": {
+  "added": "2026-10-30",
+  "doi": "10.1145/3656469",
+  "title": "Neuromorphic Perception and Navigation for Mobile Robots: A Review"
+ },
+ "https://openalex.org/W4401494155": {
+  "added": "2026-10-30",
+  "doi": "10.1007/978-3-031-64106-0_63",
+  "title": "Performance Analysis of CNNs Deployed on Low Power Arquitectures"
+ },
+ "https://openalex.org/W4402439220": {
+  "added": "2026-10-30",
+  "doi": "10.1109/nano61778.2024.10669907",
+  "title": "Neuromorphic Technology Insights in Spain"
+ },
+ "https://openalex.org/W4404998230": {
+  "added": "2026-10-30",
+  "doi": "10.3390/electronics13234786",
+  "title": "Optimized Edge-Cloud System for Activity Monitoring Using Knowledge Distillation"
+ },
+ "https://openalex.org/W4409717867": {
+  "added": "2026-10-30",
+  "doi": "10.1088/1741-4326/adcfb3",
+  "title": "Remote maintenance in IFMIF-DONES: current status and future development program"
+ },
+ "https://openalex.org/W4414110617": {
+  "added": "2026-10-30",
+  "doi": "10.1109/lra.2025.3608659",
+  "title": "Informed Federated Learning to Train a Robotic Arm Inverse Dynamic Model"
+ },
+ "https://openalex.org/W7135096180": {
+  "added": "2026-10-30",
+  "doi": "10.1088/1741-4326/ae511e",
+  "title": "Remote handling operation for IFMIF-DONES supported by time-sensitive networking"
+ }
+}
