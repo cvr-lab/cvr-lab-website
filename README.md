@@ -1,68 +1,59 @@
-# Computer Vision and Robotics Lab — website
+<div align="center">
 
-> 🇪🇸 Guía de publicación en GitHub Pages y dominio propio: [README.es.md](README.es.md)
+# Computer Vision and Robotics Lab
 
-Website of the Computer Vision and Robotics Lab (CVR Lab), University of Granada.
-Built with [Hugo](https://gohugo.io) and the [HugoBlox kit](https://github.com/HugoBlox/kit)
-(Tailwind CSS), published to GitHub Pages at <https://cvr-lab.github.io/>.
+**Active vision · Real-time processing · Neuromorphic engineering · Robotics**
 
-This is a prototype migrated from the Wowchemy 5 site currently served at
-<https://www.ugr.es/~cvrlab/> (source: `fbarranco/starter-research-group`).
+University of Granada
 
-## Where things live
+[![Website](https://img.shields.io/badge/Website-cvr--lab.github.io-1261FF?style=for-the-badge&logo=googlechrome&logoColor=white)](https://cvr-lab.github.io/)
 
-| What | Where |
+[![Built with Hugo](https://img.shields.io/badge/Built_with-Hugo-FF4088?logo=hugo&logoColor=white)](https://gohugo.io)
+[![Hosted on GitHub Pages](https://img.shields.io/badge/Hosted_on-GitHub_Pages-222222?logo=github&logoColor=white)](https://pages.github.com)
+
+</div>
+
+---
+
+## About this repository
+
+This repository contains the source of the website of the **Computer Vision and Robotics Lab (CVR Lab)** at the University of Granada. The site presents the lab's research, projects, publications, team and news.
+
+It is built with [Hugo](https://gohugo.io) and the [HugoBlox kit](https://github.com/HugoBlox/kit), and published automatically with GitHub Pages.
+
+## 🌐 Visit the website
+
+**<https://cvr-lab.github.io/>**
+
+| Section | What you will find |
 | --- | --- |
-| Home page sections (hero, about, projects, news) | `content/_index.md` |
-| Projects (one folder each, `featured.jpg` is the card image) | `content/projects/<name>/index.md` |
-| Publications (one folder each, with `cite.bib`) | `content/publications/<key>/index.md` |
-| News posts | `content/blog/<date-slug>/index.md` |
-| People page layout and groups | `content/people/index.md` |
-| Person profiles | `data/authors/<slug>.yaml` + photo in `assets/media/authors/<slug>.jpg` |
-| Contact page | `content/contact/index.md` |
-| Site name, theme, header/footer | `config/_default/params.yaml` |
-| Menu | `config/_default/menus.yaml` |
-| Hugo version used by CI | `hugoblox.yaml` (`build.hugo_version`) |
-| Project card and research-area card designs (overrides of kit's `portfolio` and `focus-areas` blocks) | `layouts/_partials/hbx/blocks/<block>/block.html` |
-| Site font (Roboto, selected by `typography.pack` in `params.yaml`) | `data/fonts/roboto.yaml` |
-| Header: logo, wordmark, menu (override of kit's navbar) | `layouts/_partials/components/headers/navbar.html` |
-| Page title band on Projects, People, News, Publications, Contact (text from each page's `lead:` front matter) | `layouts/_partials/cvr/page_header.html`, used by `layouts/landing/*.html` and `layouts/list.html` |
-| Publications page (grouped by year, type filter) | `layouts/publications/list.html` |
-| Site CSS (header, publications, section spacing) | `assets/css/custom.css` |
+| [Projects](https://cvr-lab.github.io/projects/) | Research and development projects of the lab |
+| [Publications](https://cvr-lab.github.io/publications/) | Papers and scientific output, with citation and PDF links |
+| [People](https://cvr-lab.github.io/people/) | Researchers and students of the lab |
+| [News](https://cvr-lab.github.io/blog/) | Latest news and announcements |
+| [Contact](https://cvr-lab.github.io/contact/) | How to get in touch and how to find us |
 
-### Adding a person
+## 🔬 Research areas
 
-Create `data/authors/<slug>.yaml`, where `<slug>` is the person's name lower-cased with
-dashes (`Jane Doe` → `jane-doe`). Use the same display name in a publication's or
-project's `authors:` list and it links to the profile automatically. Put
-the person in one of the groups listed in `content/people/index.md` via `user_groups`,
-and use `weight` to order people inside a group.
+- **Active vision and robotics:** perception-action loops and attention for robots that look where the task requires.
+- **Neuromorphic vision:** event-based cameras for tracking and navigation.
+- **Real-time architectures:** FPGA and embedded vision at low power.
+- **Autonomous navigation:** egomotion and SLAM for drones and mobile robots.
+- **Motion and low-level vision:** optical flow, stereo and local descriptors.
+- **Applications:** advanced driver assistance (ADAS), video surveillance and anomaly detection.
 
-## Local development
+## 📍 Find us
 
-Requirements: Hugo **extended 0.161.1** (see the note below), Go, and Node.js 22 with npm.
+Computer Vision and Robotics Lab (lab D1.2)  
+CITIC – University of Granada  
+Calle Periodista Rafael Gómez Montero, 2  
+18014 Granada, Spain
 
-```sh
-npm install          
-hugo server           # http://localhost:1313/
-```
+## 🔗 More from the lab
 
-Production build, including the search index:
+- [GitHub organization](https://github.com/cvr-lab): code and datasets from our projects
+- [YouTube channel](https://www.youtube.com/channel/UCk7tb7X-07H43RrItDFdohQ/videos): demos and videos
 
-```sh
-hugo --minify && npx pagefind --site public
-```
+## License
 
-> **Hugo version:** the pinned HugoBlox module needs Hugo ≥ 0.161.1, and Hugo 0.162.0
-> currently fails on pages that have links (`assignment to entry in nil map` in
-> `functions/build_links.html`). Keep `hugoblox.yaml` on 0.161.1 until an upgrade PR
-> builds cleanly.
-
-## Deployment
-
-Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and
-publishes it to GitHub Pages. One-time repository setup: **Settings → Pages → Build and
-deployment → Source: GitHub Actions**.
-
-`.github/workflows/upgrade.yml` opens a weekly pull request that bumps the HugoBlox
-modules; the build workflow checks it before you merge.
+Licensing information for the website template is in [LICENSE.md](LICENSE.md).

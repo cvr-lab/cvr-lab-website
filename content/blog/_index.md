@@ -6,6 +6,7 @@ cascade:
   -target:
     path: /blog/**  
   share: false
+  profile: false
 ---
 
 
