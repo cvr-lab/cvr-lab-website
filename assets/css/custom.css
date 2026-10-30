@@ -560,7 +560,8 @@ a.cvr-tag:hover {
 :is(
   .cvr-project .cvr-page-links [data-link-type="code"],
   .cvr-publication .cvr-page-links [data-link-type="pdf"],
-  .cvr-publication .cvr-page-links:not(:has([data-link-type="pdf"])) .hb-attachment-link:first-child:not(.js-cite-clipboard)
+  .cvr-publication .cvr-page-links [data-link-type="doi"],
+  .cvr-publication .cvr-page-links:not(:has([data-link-type="pdf"], [data-link-type="doi"])) .hb-attachment-link:first-child:not(.js-cite-clipboard)
 ) {
   background: var(--color-primary-600);
   border-color: var(--color-primary-600);
@@ -745,7 +746,8 @@ a.cvr-tag:hover {
 /* Principal (azul relleno): el PDF; si no hay PDF, el primer enlace que no sea Cite */
 :is(
   .cvr-pub-links [data-link-type="pdf"],
-  .cvr-pub-links:not(:has([data-link-type="pdf"])) .hb-attachment-link:first-child:not(.js-cite-clipboard)
+  .cvr-pub-links [data-link-type="doi"],
+  .cvr-pub-links:not(:has([data-link-type="pdf"], [data-link-type="doi"])) .hb-attachment-link:first-child:not(.js-cite-clipboard)
 ) {
   background: var(--color-primary-600);
   border-color: var(--color-primary-600);
@@ -758,4 +760,24 @@ a.cvr-tag:hover {
   background: var(--color-primary-700);
   border-color: var(--color-primary-700);
   color: #fff;
+}
+
+/* ── Publications: PDF and DOI always first ───────────────── */
+
+/* Páginas individuales */
+.cvr-page-links [data-link-type="pdf"] {
+  order: -2;
+}
+
+.cvr-page-links [data-link-type="doi"] {
+  order: -1;
+}
+
+/* Listado general */
+.cvr-pub-links [data-link-type="pdf"] {
+  order: -2;
+}
+
+.cvr-pub-links [data-link-type="doi"] {
+  order: -1;
 }

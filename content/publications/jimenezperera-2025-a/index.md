@@ -10,8 +10,11 @@ date: '2025-01-01'
 publishDate: '2026-10-30T08:35:23.853562Z'
 publication_types:
 - article-journal
-publication: '*IEEE Robotics and Automation Letters*'
-doi: 10.1109/lra.2025.3608659
+publication: 
+  name: '*IEEE Robotics and Automation Letters*'
+hugoblox:
+  ids:
+    doi: 10.1109/lra.2025.3608659
 abstract: Access to real-world data in robotics domains is often challenging due to
   restrictions on data sharing and limited availability. Although privacy and intellectual
   property concerns are the main barriers, ensuring data access is crucial for advancing

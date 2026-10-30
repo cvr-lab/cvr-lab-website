@@ -9,8 +9,11 @@ date: '2024-01-01'
 publishDate: '2026-10-30T08:35:23.845861Z'
 publication_types:
 - article-journal
-publication: '*Electronics*'
-doi: 10.3390/electronics13234786
+publication: 
+  name: '*Electronics*'
+hugoblox:
+  ids:
+    doi: 10.3390/electronics13234786
 abstract: Driven by the increasing care needs of residents in long-term care facilities,
   Ambient Assisted Living paradigms have become very popular, offering new solutions
   to alleviate this burden. This work proposes an efficient edge-cloud system for

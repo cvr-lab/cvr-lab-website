@@ -11,8 +11,11 @@ date: '2023-01-01'
 publishDate: '2026-10-30T08:35:23.819747Z'
 publication_types:
 - article-journal
-publication: '*Journal of Signal Processing Systems*'
-doi: 10.1007/s11265-023-01840-4
+publication: 
+  name: '*Journal of Signal Processing Systems*'
+hugoblox:
+  ids:
+    doi: 10.1007/s11265-023-01840-4
 abstract: 'Abstract The pace of population ageing is increasing and is currently becoming
   one of the challenges our society faces. The introduction of Cyber-Physical Systems
   (CPS) has fostered the development of e-Health solutions that ease the associated

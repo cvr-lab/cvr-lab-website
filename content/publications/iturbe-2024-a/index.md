@@ -65,8 +65,11 @@ date: '2024-01-01'
 publishDate: '2026-10-30T08:35:23.841011Z'
 publication_types:
 - paper-conference
-publication: '*IEEE International Conference on Nanotechnology (IEEE-NANO)*'
-doi: 10.1109/nano61778.2024.10669907
+publication: 
+  name: '*IEEE International Conference on Nanotechnology (IEEE-NANO)*'
+hugoblox:
+  ids:
+    doi: 10.1109/nano61778.2024.10669907
 abstract: This paper provides an overview of the main research activities carried
   out by Spanish organizations in areas related to neuromorphic technologies, spanning
   physical, materials, circuitry, and architectural levels. It also discusses the

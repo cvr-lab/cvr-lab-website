@@ -12,8 +12,11 @@ date: '2026-01-01'
 publishDate: '2026-10-30T08:35:23.862317Z'
 publication_types:
 - article-journal
-publication: '*Nuclear Fusion*'
-doi: 10.1088/1741-4326/ae511e
+publication: 
+  name: '*Nuclear Fusion*'
+hugoblox:
+  ids:
+    doi: 10.1088/1741-4326/ae511e
 abstract: Abstract Experimental fusion research facilities, such as the International
   Fusion Materials Irradiation Facility-DEMO Oriented Neutron Source (IFMIF-DONES),
   require advanced remote handling (RH) systems to perform maintenance and inspection

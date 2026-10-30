@@ -6,7 +6,7 @@ name:
   given: Pablo
   family: Del Rio Lopez
 role: Researcher
-bio: He obtained his B.Sc. degree in Computer Science and B. degree in Business Administration and Management from the University of Granada (UGR) in 2025. He is currently working as a resercher in the CVR Lab at UGR.
+bio: Pablo Del Río was born in Granada in 2002. He obtained his B.Sc. degree in Computer Science and B. degree in Business Administration and Management from the University of Granada (UGR) in 2025. He is currently working as a resercher in the CVR Lab at UGR.
 affiliations:
 - name: Universidad de Granada
 links:
@@ -36,4 +36,4 @@ education:
   end: 2025-12-31
 user_groups:
 - Researchers
-weight: 2
+weight: 4

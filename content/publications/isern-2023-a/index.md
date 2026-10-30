@@ -13,8 +13,11 @@ date: '2023-01-01'
 publishDate: '2026-10-30T08:35:23.815397Z'
 publication_types:
 - article-journal
-publication: '*Journal of Signal Processing Systems*'
-doi: 10.1007/s11265-023-01842-2
+publication: 
+  name: '*Journal of Signal Processing Systems*'
+hugoblox:
+  ids:
+    doi: 10.1007/s11265-023-01842-2
 abstract: Abstract This work proposes a Cyber-Physical System (CPS) for protecting
   smart electric grid critical infrastructures using video surveillance while remotely
   monitoring them. Due to the critical nature of the smart grid, it is necessary to

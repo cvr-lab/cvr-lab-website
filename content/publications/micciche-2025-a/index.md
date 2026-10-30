@@ -29,8 +29,11 @@ date: '2025-01-01'
 publishDate: '2026-10-30T08:35:23.857608Z'
 publication_types:
 - article-journal
-publication: '*Nuclear Fusion*'
-doi: 10.1088/1741-4326/adcfb3
+publication: 
+  name: '*Nuclear Fusion*'
+hugoblox:
+  ids:
+    doi: 10.1088/1741-4326/adcfb3
 abstract: 'Abstract The International Fusion Materials Irradiation Facility—DEMO Oriented
   Neutron Source (IFMIF-DONES) is a facility currently being built in Granada (Spain).
   It is an accelerator-driven intense neutron source designed for the study and qualification

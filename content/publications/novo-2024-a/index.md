@@ -10,8 +10,11 @@ date: '2024-01-01'
 publishDate: '2026-10-30T08:35:23.836902Z'
 publication_types:
 - article-journal
-publication: '*ACM Computing Surveys*'
-doi: 10.1145/3656469
+publication: 
+  name: '*ACM Computing Surveys*'
+hugoblox:
+  ids:
+    doi: 10.1145/3656469
 abstract: With the fast and unstoppable evolution of robotics and artificial intelligence,
   effective autonomous navigation in real-world scenarios has become one of the most
   pressing challenges in the literature. However, demanding requirements, such as

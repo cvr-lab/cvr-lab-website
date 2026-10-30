@@ -9,8 +9,11 @@ date: '2023-01-01'
 publishDate: '2026-10-30T08:35:23.832827Z'
 publication_types:
 - paper-conference
-publication: '*Conference on Information Sciences and Systems*'
-doi: 10.1109/ciss56502.2023.10089678
+publication: 
+  name: '*Conference on Information Sciences and Systems*'
+hugoblox:
+  ids:
+    doi: 10.1109/ciss56502.2023.10089678
 abstract: 'Visual event sensors only output data when changes in the scene happen
   at very high frequency. This allows for smartly compressing the scene and thus,
   enabling real-time operation. Despite these advantages, works in the literature

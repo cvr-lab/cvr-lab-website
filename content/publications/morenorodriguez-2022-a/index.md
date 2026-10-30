@@ -10,6 +10,9 @@ date: '2022-01-01'
 publishDate: '2026-10-30T08:35:23.809846Z'
 publication_types:
 - article-journal
-publication: '*Lecture notes in computer science*'
-doi: 10.1007/978-3-031-04881-4_32
+publication: 
+  name: '*Lecture notes in computer science*'
+hugoblox:
+  ids:
+    doi: 10.1007/978-3-031-04881-4_32
 ---
