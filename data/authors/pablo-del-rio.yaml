@@ -1,0 +1,39 @@
+schema: hugoblox/author/v1
+slug: pablo-del-rio
+is_owner: false
+name:
+  display: Pablo Del Rio
+  given: Pablo
+  family: Del Rio Lopez
+role: Researcher
+bio: He obtained his B.Sc. degree in Computer Science and B. degree in Business Administration and Management from the University of Granada (UGR) in 2025. He is currently working as a resercher in the CVR Lab at UGR.
+affiliations:
+- name: Universidad de Granada
+links:
+- icon: at-symbol
+  url: mailto:pdrl@ugr.es
+- icon: brands/github
+  url: https://github.com/pdrl02
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/pablo-del-rio-l%C3%B3pez-32566a383/
+interests:
+- Computer Vision
+- Neuromorphic
+- Robotics
+- Machine Learning
+- Deep Learning
+- Drones
+- Autonomous Navigation
+- 3D Vision and Reconstruction
+- Object detection and Tracking
+- Real-Time Systems
+education:
+- degree: BSc in Computer Science, University of Granada
+  institution: Universidad de Granada
+  end: 2025-12-31
+- degree: Bachelor degree in Business Administration and Management, University of Granada
+  institution: Universidad de Granada
+  end: 2025-12-31
+user_groups:
+- Researchers
+weight: 2
